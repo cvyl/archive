@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Space Simulation</title>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Set up the scene
+      var scene = new THREE.Scene();
+
+      // Set up the camera
+      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 5;
+
+      // Set up the renderer
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Function to create 2D and 3D star field
+      function createStarField(starFieldType, numStars, radius) {
+        // Create a 2D star field
+        if (starFieldType === "2D") {
+          for (var i = 0; i < numStars; i++) {
+            // Create a new sprite
+            var star = new THREE.Sprite(new THREE.SpriteMaterial({ color: 0xffffff }));
+
+            // Set the position of the sprite
+            star.position.set(Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1);
+            star.position.setLength(radius);
+
+            // Set the scale of the sprite
+            star.scale.x = star.scale.y = Math.random() * 0.05 + 0.01;
+
+            // Add the sprite to the scene
+            scene.add(star);
+          }
+        }
+        // Create a 3D star field
+        else if (starFieldType === "3D") {
+          var starsGeometry = new THREE.Geometry();
+          for (var i = 0; i < numStars; i++) {
+            // Create a new vertex
+            var starVertex = new THREE.Vector3();
+            starVertex.x = Math.random() * 2 - 1;
+            starVertex.y = Math.random() * 2 - 1;
+            starVertex.z = Math.random() * 2 - 1;
+            starVertex.multiplyScalar(radius);
+
+            // Add the vertex to the geometry
+            starsGeometry.vertices.push(starVertex);
+          }
+
+          // Create the material for the 3D star field
+          var starsMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+
+          // Create the point cloud for the 3D star field
+          var stars = new THREE.Points(starsGeometry, starsMaterial);
+
+          // Add the point cloud to the scene
+          scene.add(stars);
+        }
+      }
+
+      // Call the function to create the
+      // Call the function to create the star field
+      createStarField("2D", 500, 90);
+      createStarField("3D", 5000, 90);
+
+      // Render the scene
+      function render() {
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+      }
+      render();
+    </script>
+  </body>
+</html>

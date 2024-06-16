@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Uploader</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="image-file">Select an image to upload:</label>
+        <input type="file" name="image-file" id="image-file" required>
+        <br>
+        <label for="image-name">Enter a custom name for the image (optional):</label>
+        <input type="text" name="image-name" id="image-name">
+        <br>
+        <label for="password">Enter the password:</label>
+        <input type="password" name="password" id="password" required>
+        <br>
+        <input type="submit" value="Upload" id="upload-button">
+    </form>
+    <progress id="upload-progress" value="0" max="100"></progress>
+    <div id="upload-status"></div>
+</body>
+</html>

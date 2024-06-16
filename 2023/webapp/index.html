@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="deviceInfoApp">
+<head>
+  <title>Device Information</title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.0.3/dist/tailwind.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="deviceInfoCtrl">
+  <div class="container mx-auto">
+    <h1 class="text-center text-2xl">Device Information</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="col-span-1 p-4">
+        <h2 class="text-lg font-medium">Screen Information</h2>
+        <p class="text-base">Screen Width: {{screenWidth}}</p>
+        <p class="text-base">Screen Height: {{screenHeight}}</p>
+        <p class="text-base">Device Pixel Ratio: {{devicePixelRatio}}</p>
+      </div>
+      <div class="col-span-1 p-4">
+        <h2 class="text-lg font-medium">Device Information</h2>
+        <p class="text-base">Device Type: {{deviceType}}</p>
+        <p class="text-base">Operating System: {{operatingSystem}}</p>
+        <p class="text-base">Navigator Language: {{navigatorLanguage}}</p>
+        <p class="text-base">Browser Name: {{browserName}}</p>
+        <p class="text-base">Browser Version: {{browserVersion}}</p>
+        <p class="text-base">CPU Architecture: {{cpuArchitecture}}</p>
+        <p class="text-base">IPv4: {{ipv4}}</p>
+        <p class="text-base">IPv6: {{ipv6}}</p>
+        <p class="text-base">Geolocation: {{geolocation}}</p>
+        <p class="text-base">Battery Status: {{battery}}</p>
+        <p class="text-base">Memory: {{memory}}</p>
+        <p class="text-base">Storage: {{storage}}</p>
+        <p class="text-base">User-Agent: {{userAgent}}</p>
+        <p class="text-base">Timezone: {{timezone}}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
